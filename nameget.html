@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Enter Name</title>
+  <style>
+    body { text-align: center; font-family: sans-serif; margin-top: 50px; }
+    input, button { font-size: 18px; padding: 10px; margin: 10px; width: 80%; }
+  </style>
+</head>
+<body>
+  <h2>Enter your name to continue</h2>
+  <input id="nameInput" placeholder="Enter your name">
+  <br>
+  <button onclick="goApp()">Next</button>
+
+  <script>
+    function goApp() {
+      var name = document.getElementById("nameInput").value.trim();
+      if (name.length === 0) {
+        alert("Please enter your name");
+        return;
+      }
+      // Redirect to app with name as parameter
+      window.location.href = "intent://masterclassroom.github.io/Developers/nameget.html?name=" + encodeURIComponent(name) + "#Intent;scheme=https;package=com.datagatter.app;end";
+    }
+  </script>
+</body>
+</html>
