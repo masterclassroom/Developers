@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Download App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       font-family: sans-serif;
@@ -43,10 +44,22 @@
   </div>
 
   <script>
+    // Function: Hex → String
+    function fromHex(hex) {
+      try {
+        return hex.match(/.{1,2}/g)
+          .map(byte => String.fromCharCode(parseInt(byte, 16)))
+          .join('');
+      } catch (e) {
+        return "";
+      }
+    }
+
     const params = new URLSearchParams(window.location.search);
     const appFile = params.get("app");
     const iconURL = params.get("png") || "default-icon.png";
-    const description = params.get("des") || "";
+    const descriptionHex = params.get("des") || "";
+    const description = fromHex(descriptionHex); // Decode here
 
     if (appFile && appFile.endsWith(".apk")) {
       const appName = appFile.replace(".apk", "")
