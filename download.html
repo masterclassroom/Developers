@@ -131,7 +131,7 @@ const iconURL = params.get("png") || "default-icon.png";
 const descriptionHex = params.get("des") || "";
 const appId = params.get("appId") || "unknown";
 const photosParam = params.get("photos") || "[]";
-  document.title += " | " + appName;
+  
 
 const description = fromHex(descriptionHex);
 let photos = [];
@@ -141,6 +141,7 @@ const countRef = ref(db, `downloads/${appId}`);
 
 if(appFile && appFile.endsWith(".apk")){
   const appName = appFile.replace(".apk","").replaceAll("_"," ").replace(/\b\w/g,l=>l.toUpperCase());
+  document.title += " | " + appName
 
   let photosHTML = '';
   if(photos.length>0){
